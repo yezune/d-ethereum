@@ -1,0 +1,1 @@
+module ethereum.miner;

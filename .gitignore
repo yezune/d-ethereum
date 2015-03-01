@@ -1,0 +1,9 @@
+.dub
+docs.json
+__dummy.html
+*.o
+*.obj
+d-ethereum
+ethereum.log
+dub.selections.json
+test.sh
