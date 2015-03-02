@@ -38,9 +38,8 @@ First byte of an encoded item
 */
 
 enum RlpType:ubyte {
-    None   = 0,
-    String = 1,
-    Array  = 2
+    String = 0,
+    Array  = 1
 }
 
 enum {
@@ -189,23 +188,25 @@ private:
                     
                     pt = decodePrefix(ldata);
 
-                    if(pt[0] == RlpType.String)
-                        app.put( Rlp( ldata[pt[1] .. pt[2]]) );
-                    else if(pt[0] == RlpType.Array){
-                        // Recursive call
-                        app.put( decode(ldata) );
-                    }else
-                        assert(0, "never reach me!");
+                    final switch(pt[0]){
+                        case RlpType.String:
+                            app.put( Rlp( ldata[pt[1] .. pt[2]]) );
+                            break;
+
+                        case RlpType.Array:
+                            // Recursive call
+                            app.put( decode(ldata) );
+                            break;
+                    }
                     
                     ldata = ldata[pt[2] .. $];
                 }
                 ret = Rlp(app.data);
                 break;
-            case RlpType.None:
-                assert(0, "never reach me!");
         }
         return ret;
     }   
+
     static string n2be(ulong ln){
         auto v = nativeToBigEndian(ln);
         
@@ -222,6 +223,7 @@ private:
         auto n = parse!uint(be, 16);        
         return n;
     }
+
     static PosTuple decodePrefix(string rlpData){
         
         string debugStr(char prefix, PosTuple p){
@@ -276,7 +278,7 @@ private:
         return ret; 
     }
 
-    RlpType m_type=RlpType.None;
+    RlpType m_type=RlpType.String;
     union{
         string  m_data;
         Rlp[] m_list;        
@@ -300,7 +302,7 @@ unittest{ // string encode(Rlp val);
 
     v = [Rlp(),Rlp()];
     assert(v.type == RlpType.Array);
-    assert(Rlp().type == RlpType.None);
+    assert(Rlp().type == RlpType.String);
     assert(Rlp("string").type == RlpType.String);
     assert(Rlp(["1","2"]).type == RlpType.Array);
     assert(Rlp([Rlp()]).type == RlpType.Array);
