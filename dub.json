@@ -4,8 +4,7 @@
 	"copyright": "Copyright © 2015, yezune",
 	"authors": ["yezune"],
 	"dependencies": {
-		"vibe-d":"~>0.7.22",
-		"d-leveldb":"~>1.16.0"
+		"vibe-d":"~>0.7.22"
 	},
 	"versions": ["VibeDefaultMain"]
 }

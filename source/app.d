@@ -2,6 +2,8 @@
 //import std.stdio;
 import vibe.d;
 
+import ethereum.all;
+
 shared static this()
 {
 	auto router = new URLRouter;
