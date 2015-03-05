@@ -1,13 +1,8 @@
 module ethereum.rlp;
 
-//import std.bigint;
-//import std.string;
 import std.array: appender ;
-//import core.exception: AssertError;
-//import std.container:Array;
 import std.bitmanip:nativeToBigEndian;
 import std.format:formattedWrite;
-
 import std.stdio:writeln,writefln;
 import std.typecons:Tuple;
 import std.conv:parse;
@@ -102,8 +97,10 @@ struct Rlp {
         auto v = encode(this);
         auto app = appender!string;
         
+        immutable byte ASCII=127;
+
         foreach(c; v){
-            if(c > 127){
+            if(c > ASCII){
                 formattedWrite(app, "\\x%x", c);
             }else{
                 app.put(c);

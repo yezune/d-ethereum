@@ -2,6 +2,11 @@ module ethereum.common;
 
 import std.bigint;
 
+alias U256_T=BigInt;
+alias S256_T=BigInt;
+alias U160_T=BigInt;
+
+
 alias Value = BigInt;	// for Ether value ( Wei,Szabo,Finny,Ether )
 alias Address = BigInt;	// 160 bit address 
 alias Account = BigInt;	// 256 bit account;

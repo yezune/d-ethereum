@@ -1,7 +1,6 @@
 module ethereum.state;
 
 
-
-class WorldState {
+class State {
 	
 }
