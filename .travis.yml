@@ -6,7 +6,7 @@ language: d
 d:
   - dmd-2.066.1
 
-brefore_install:
+before_install:
   # U
   - LEVELDB_VER=1.16
   - curl -fsSL https://github.com/google/leveldb/archive/v${LEVELDB_VER}.tar.gz | tar -C ${HOME} -xzf -
