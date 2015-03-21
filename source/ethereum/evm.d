@@ -425,3 +425,60 @@ immutable (U256_T) Gsha3 = 10;
 immutable (U256_T) Gsha3word = 10;
 immutable (U256_T) Gcopy = 1;
 
+
+struct RuntimeData
+{
+	enum Index
+	{
+		Gas,
+		GasPrice,
+		CallData,
+		CallDataSize,
+		Address,
+		Caller,
+		Origin,
+		CallValue,
+		CoinBase,
+		Difficulty,
+		GasLimit,
+		Number,
+		Timestamp,
+		Code,
+		CodeSize,
+
+		SuicideDestAddress = Address,		///< Suicide balance destination address
+		ReturnData 		   = CallData,		///< Return data pointer (set only in case of RETURN)
+		ReturnDataSize 	   = CallDataSize,	///< Return data size (set only in case of RETURN)
+	};
+
+	S64_T 	gas = 0;
+	S64_T 	gasPrice = 0;
+	string  callData;
+	U64_T 	callDataSize = 0;
+	U256_T 	address;
+	U256_T 	caller;
+	U256_T 	origin;
+	U256_T 	callValue;
+	U256_T 	coinBase;
+	U256_T 	difficulty;
+	U256_T 	gasLimit;
+	U64_T 	number = 0;
+	S64_T 	timestamp = 0;
+	string	code;
+	U64_T 	codeSize = 0;
+	U256_T	codeHash;
+}
+
+class Env {
+
+}
+
+class Vm {
+
+	void run(RuntimeData data, Env env){
+		return ; 
+	}
+}
+
+
+

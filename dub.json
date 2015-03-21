@@ -1,11 +1,13 @@
 {
 	"name": "d-ethereum",
 	"description": "Yezune Choi's D implementation of the Ethereum yellowpaper. http://www.gavwood.com/Paper.pdf.",
-	"copyright": "Copyright © 2015, yezune",
-	"authors": ["yezune"],
+	"license":"GPL v3.0",
+	"copyright": "Copyright © 2015, yezune choi",
+	"authors": ["yezune choi"],
 	"dependencies": {
 		"vibe-d":"~>0.7.22",
-		"d-leveldb":"~>1.16.0"
+		"openssl": "~>1.1.4+1.0.1g",
+		"d-leveldb":"~>1.16.0",
 	},
 	"versions": ["VibeDefaultMain"]
 }

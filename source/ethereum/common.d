@@ -6,6 +6,8 @@ alias U256_T=BigInt;
 alias S256_T=BigInt;
 alias U160_T=BigInt;
 
+alias S64_T = long;
+alias U64_T = ulong;
 
 alias Value = BigInt;	// for Ether value ( Wei,Szabo,Finny,Ether )
 alias Address = BigInt;	// 160 bit address 

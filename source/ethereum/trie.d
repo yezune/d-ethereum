@@ -1,19 +1,30 @@
 module ethereum.trie;
 
-import leveldb;
+import ethereum.rlp;
+import leveldb:DB,Options,Slice;
 
+
+class TrieDb:DB 
+{
+    this(string fileName){
+        auto opt = new Options;
+        opt.create_if_missing = true;
+        this(opt,fileName);
+    }
+
+    this(Options opt, string fileName){
+        super(opt, fileName);
+    }
+}
 
 unittest
 {
-	import std.file:remove;
+	import std.file:rmdirRecurse;
     import std.stdio:writeln;
-
-    auto opt = new Options;
-    opt.create_if_missing = true;
 
     string dbFileName = "test_db_file_name";
 
-    auto db = new DB(opt, dbFileName);
+    auto db = new TrieDb(dbFileName);
     
     scope(exit){ rmdirRecurse(dbFileName); }
 
@@ -32,28 +43,41 @@ unittest
     }
 }
 
+class Hash{
 
-class Database{
-    this(string path){
-        m_path = path;
-        initDatabase();
+}
+
+class Trie {
+    this(TrieDb db, Hash root){
+        m_db = db;
+        m_root = root;
     }
 
+    Slice get(Slice key){
+        return Slice();
+    }
+
+    void set(Slice key, Slice value){
+
+    }
+    
 private:
-    void initDatabase(){
-        auto opt = new Options;
-        opt.create_if_missing = true;
-        m_db = new DB(opt, dbFileName);        
-    }
-
-    string m_path;
-    DB m_db;
+    TrieDb m_db;
+    Hash m_root;
 }
 
 
-struct Trie{
+unittest{
+
+    import std.file:rmdirRecurse;
+
+    string dbFileName = "trie_db_file_name";
 
 
+    auto db = new TrieDb(dbFileName);
+    scope(exit){ rmdirRecurse(dbFileName); }
+
+    auto hash = new Hash;
+
+    auto trie = new Trie(db, hash);
 }
-
-
