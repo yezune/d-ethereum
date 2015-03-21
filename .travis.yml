@@ -1,10 +1,16 @@
 os:
-  - osx  
+  - linux 
+  
 language: d
 
 d:
   - dmd-2.066.1
 
-  
+before_install:
+  - sudo apt-get install git-core libsnappy-dev
+  - git clone https://code.google.com/p/leveldb/
+  - cd leveldb
+  - make & install
+
 script:
   - dub test
