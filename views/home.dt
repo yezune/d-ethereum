@@ -1,9 +1,18 @@
 extends layout
 
 block title
-	- auto title = "Home";
+	- auto title = "SocialCreditCoin";
 
 block body
+	
+	div(ng-app)
+		label Name:
+		input(type="text", ng-model="yourName", placeholder="Enter a name here")
+		hr
+		h1 Hello {{yourName}}!
+
 	p This is the homepage of the d-ethereum project.
 	p
 		a(href="/about") About
+
+
