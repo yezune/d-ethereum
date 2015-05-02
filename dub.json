@@ -5,9 +5,10 @@
 	"copyright": "Copyright © 2015, yezune choi",
 	"authors": ["yezune choi"],
 	"dependencies": {
-		"vibe-d":"~>0.7.22",
-		"openssl": "~>1.1.4+1.0.1g",
+		"vibe-d":"~>0.7.23",
 		"d-leveldb":"~>1.16.0",
+		"botan":"~master"
 	},
 	"versions": ["VibeDefaultMain"]
 }
+
